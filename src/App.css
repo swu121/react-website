@@ -23,11 +23,29 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.Projects{
+  display:flex;
+  padding-left: 250px;
+}
+.Intro{
+  display: flex;
+  padding-left: 250px;
+  font-size: 40px;
+}
 .App-link {
   color: #61dafb;
 }
-
+.IntroText{
+  font-family: 'Raleway', sans-serif;
+  margin: 20px;
+  font-size: 90px;
+}
+.IntroDesc{
+  padding-top: 50px;
+  padding-left: 250px;
+  display: block;
+  text-align: left;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
