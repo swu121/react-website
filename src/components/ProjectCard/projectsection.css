@@ -1,0 +1,13 @@
+.Projects{
+    display:block;
+    text-align: left;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 120px;
+}
+
+.cardsection{
+    padding-top: 10px;
+    display: flex
+}

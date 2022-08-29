@@ -1,3 +1,7 @@
 export function Header(){
-    return <h1> This the header!</h1>
+    return(
+        <div className="Container">
+            <p></p>
+        </div>
+    )
 }

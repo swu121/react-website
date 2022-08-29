@@ -1,0 +1,10 @@
+.Title{
+    display:block;
+    text-align: left;
+}
+
+.ResumeSection{
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 200px;
+}
