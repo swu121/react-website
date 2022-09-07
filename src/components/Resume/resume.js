@@ -1,11 +1,18 @@
 import './resume.css';
+import resumepdf from '../images/resume.pdf'
+import React from 'react'
+import { Document, Page, pdfjs } from 'react-pdf'
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 export function Resume(){
     return(
         <div className="ResumeSection">
             <h1 className="Title">Resume</h1>
-            <object data="http://africau.edu/images/default/sample.pdf" type="application/pdf" width="100%" height="100%" style= {{height:"700px"}}>
-                <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the PDF!</a></p>
-            </object>
+            <div className='flexible'>
+                <Document file={resumepdf}>
+                    <Page pageNumber={1}/>
+                </Document>
+            </div>
         </div>
     )
 }

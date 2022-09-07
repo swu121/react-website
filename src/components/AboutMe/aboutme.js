@@ -1,5 +1,5 @@
 import './aboutme.css';
-import faceshot from '../images/faceshot.jpg'
+import faceshot from '../images/profile.jpg'
 
 export function AboutMe(){
     return(
