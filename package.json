@@ -2,7 +2,7 @@
   "name": "website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "swu121.github.io",
+  "homepage": "https://swu121.github.io/react-website",
   "dependencies": {
     "@react-pdf/renderer": "^3.0.0",
     "@testing-library/jest-dom": "^5.16.5",
