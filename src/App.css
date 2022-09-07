@@ -41,7 +41,9 @@
 }
 
 .IntroDesc{
-  padding: 200px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 100px;
   padding-bottom: 0px;
   display: block;
   text-align: left;

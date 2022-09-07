@@ -12,7 +12,9 @@ export function IconList(){
             <img style={{"--order": 2}} className = 'images' src = {linkedin} alt = "linkedin"/>
             </a>
             <button style={{"--order": 3}} type="button" className ="btn btn-dark">Resume</button>
-            <button style={{"--order": 4}} type="button" className ="btn btn-dark">Contact</button>
+            <a href='mailto:swu121@gmail.com'>
+                <button style={{"--order": 4}} type="button" className ="btn btn-dark">Contact</button>
+            </a>
         </div>
     )
 }
