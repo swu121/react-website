@@ -1,10 +1,13 @@
 .main{
     width: 100%;
-    height: 130px;
+    height: 150px;
     background-color: rgb(15, 14, 82);
     color: white;
 }
 
+.textcontainer{
+    padding-top: 15px;
+}
 
 .footertext{
     font-family: 'Raleway', sans-serif;

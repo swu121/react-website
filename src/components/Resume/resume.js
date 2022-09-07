@@ -1,5 +1,4 @@
 import './resume.css';
-
 export function Resume(){
     return(
         <div className="ResumeSection">
