@@ -13,7 +13,7 @@ function App() {
         <h1 style={{"--order": 1}} className="IntroText">Hey! &#128075;</h1> 
         <h1 style={{"--order": 2}} className="IntroText">I'm Steven Wu - a</h1>
         <h1 style={{"--order": 3}} className="IntroText">software engineer</h1>
-        <h1 style={{"--order": 4}} className="IntroText">based in Portland, OR</h1>
+        <h1 style={{"--order": 4}} className="IntroText">based in San Francisco, CA</h1>
       </div>
       <IconList/>
       <Resume/>
