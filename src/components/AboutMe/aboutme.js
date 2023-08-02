@@ -12,8 +12,8 @@ export function AboutMe(){
                 <ul>
                     <li>Graduated from California Polytechnic University in 2021 </li>
                     <li>Software Engineer at Nike  </li>
-                    <li>I enjoy weightlifting, cooking, collecting sneakers, and basketball</li>
-                    <li>Always looking for good travel reccomendations!</li> 
+                    <li>I enjoy weightlifting, cooking, golfing, snowboarding, and live music events</li>
+                    <li>Always looking for good travel recommendations!</li> 
                 </ul> 
             </div>
         </div>
