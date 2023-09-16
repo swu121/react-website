@@ -1,13 +1,13 @@
 terraform {
   # Run init/plan/apply with "backend" commented-out (ueses local backend) to provision Resources (Bucket, Table)
   # Then uncomment "backend" and run init, apply after Resources have been created (uses AWS)
-  # backend "s3" {
-  #   bucket         = "swu-portfolio-tf-state-lock-bucket"
-  #   key            = "tf-infra/terraform.tfstate"
-  #   region         = "us-east-1"
-  #   dynamodb_table = "swu-portfolio-terraform-state-locking"
-  #   encrypt        = true
-  # }
+  backend "s3" {
+    bucket         = "swu-portfolio-tf-state-lock-bucket"
+    key            = "tf-infra/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "swu-portfolio-terraform-state-locking"
+    encrypt        = true
+  }
 
   required_providers {
     aws = {
@@ -18,9 +18,9 @@ terraform {
 
 
 provider "aws" {
-    region = "us-east-1"
-    access_key = "AKIAWGA64FHLM3N52QN2"
-    secret_key = "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"
+    region = var.aws_region
+    access_key = ${{secrets.AWS_ACCESS_KEY_ID}}
+    secret_key = ${{secrets.AWS_SECRET_KEY_ID}}
 
 }
 
