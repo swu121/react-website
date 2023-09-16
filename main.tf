@@ -8,7 +8,7 @@ terraform {
   #   dynamodb_table = "swu-portfolio-terraform-state-locking"
   #   encrypt        = true
   # }
-  
+
   required_providers {
     aws = {
       source = "hashicorp/aws"
