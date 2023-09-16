@@ -11,24 +11,24 @@ terraform {
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 }
 
 
 provider "aws" {
-    region = var.aws_region
+  region = var.aws_region
 
 }
 
-resource "aws_s3_bucket" "hosting_bucket"{ 
+resource "aws_s3_bucket" "hosting_bucket" {
   bucket = "swu-portfolio-bucket"
 }
 
-resource "aws_s3_bucket_acl" "hosting_bucket_acl"{ 
-  bucket = aws_s3_bucket.hosting_bucket.id 
-  acl = "public-read"
+resource "aws_s3_bucket_acl" "hosting_bucket_acl" {
+  bucket     = aws_s3_bucket.hosting_bucket.id
+  acl        = "public-read"
   depends_on = [aws_s3_bucket_ownership_controls.s3_bucket_acl_ownership]
 }
 
@@ -51,9 +51,9 @@ resource "aws_s3_bucket_public_access_block" "example" {
 
 
 resource "aws_s3_bucket_policy" "hosting_bucket_policy" {
-    bucket = aws_s3_bucket.hosting_bucket.id
+  bucket = aws_s3_bucket.hosting_bucket.id
 
-    policy = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
@@ -68,12 +68,12 @@ resource "aws_s3_bucket_policy" "hosting_bucket_policy" {
         ]
       },
       {
-        Sid = "PublicReadGetObject"
+        Sid       = "PublicReadGetObject"
         Principal = "*"
         Action = [
           "s3:GetObject",
         ]
-        Effect   = "Allow"
+        Effect = "Allow"
         Resource = [
           "arn:aws:s3:::${"swu-portfolio-bucket"}",
           "arn:aws:s3:::${"swu-portfolio-bucket"}/*"
@@ -81,35 +81,35 @@ resource "aws_s3_bucket_policy" "hosting_bucket_policy" {
       },
     ]
   })
-  
+
   depends_on = [aws_s3_bucket_public_access_block.example]
 }
 
 resource "aws_s3_bucket_website_configuration" "hosting_bucket_website_configuration" {
-    bucket = aws_s3_bucket.hosting_bucket.id
+  bucket = aws_s3_bucket.hosting_bucket.id
 
-    index_document {
-      suffix = "index.html"
-    }
+  index_document {
+    suffix = "index.html"
+  }
 }
 
-module "template_files"{ 
-  source = "hashicorp/dir/template"
-  base_dir="${path.module}/build"
+module "template_files" {
+  source   = "hashicorp/dir/template"
+  base_dir = "${path.module}/build"
 }
 
 resource "aws_s3_object" "hosting_bucket_files" {
-    bucket = aws_s3_bucket.hosting_bucket.id
+  bucket = aws_s3_bucket.hosting_bucket.id
 
-    for_each = module.template_files.files
+  for_each = module.template_files.files
 
-    key = each.key
-    content_type = each.value.content_type
+  key          = each.key
+  content_type = each.value.content_type
 
-    source  = each.value.source_path
-    content = each.value.content
+  source  = each.value.source_path
+  content = each.value.content
 
-    etag = each.value.digests.md5
+  etag = each.value.digests.md5
 }
 
 locals {
@@ -118,8 +118,8 @@ locals {
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name              = aws_s3_bucket.hosting_bucket.bucket_domain_name
-    origin_id                = local.s3_origin_id
+    domain_name = aws_s3_bucket.hosting_bucket.bucket_domain_name
+    origin_id   = local.s3_origin_id
   }
 
   enabled             = true
@@ -165,7 +165,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 }
 
-module "tf-state" { 
-  source = "./modules/tf-state"
+module "tf-state" {
+  source      = "./modules/tf-state"
   bucket_name = "swu-portfolio-tf-state-lock-bucket"
 }
